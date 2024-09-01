@@ -1,8 +1,8 @@
 LearnWebGPU   
-Step: 5
+Step: 8
 ===========
 
-Opens a window where we will draw next
+Opens a window where we will draw a single color
 
 This is a repository of me learning webgpu using  [Learn WebGPU](https://eliemichel.github.io/LearnWebGPU) web book.
 
