@@ -1,23 +1,24 @@
+
+#include <webgpu/webgpu.hpp>
 #include <iostream>
 #include <vector>
 #include <GLFW/glfw3.h>
-#include <webgpu/webgpu.hpp>
 
 #include "Application.h"
 
 int main()
 {
-    learn::webgpu::Application app;
+    learn::webgpu::Application appPtr;
 
-    if (!app.init())
+    if (!appPtr.init())
     {
         return -1;
     }
 
-    while (app.isRunning() && app.renderColor())
+    while (appPtr.isRunning() && appPtr.renderColor())
     {
-        app.mainLoop();
+        appPtr.mainLoop();
     }
 
-    app.terminate();
+    appPtr.terminate();
 }

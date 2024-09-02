@@ -56,18 +56,18 @@ namespace learn::webgpu
         };
 
         mDevice = adapter.requestDevice(deviceDesc);
-        wgpu::TextureFormat textureFormat = wgpuSurfaceGetPreferredFormat(mSurface, adapter);
+        wgpu::TextureFormat textureFormat = mSurface.getPreferredFormat(adapter);
         instance.release();
         adapter.release();
 
-        auto onDeviceError = [](WGPUErrorType type, char const *message, void * /* pUserData */)
+        auto onDeviceError = [](wgpu::ErrorType type, char const *message)
         {
             std::cout << "Uncaptured device error: type " << type;
             if (message)
                 std::cout << " (" << message << ")";
             std::cout << std::endl;
         };
-        wgpuDeviceSetUncapturedErrorCallback(mDevice, onDeviceError, nullptr /* pUserData */);
+        mDevice.setUncapturedErrorCallback(onDeviceError);
 
         // configure the surface
         wgpu::SurfaceConfiguration surfaceConfig = {};
@@ -78,10 +78,10 @@ namespace learn::webgpu
         surfaceConfig.device = mDevice;
         surfaceConfig.presentMode = wgpu::PresentMode::Fifo;
         surfaceConfig.alphaMode = wgpu::CompositeAlphaMode::Auto;
-        wgpuSurfaceConfigure(mSurface, &surfaceConfig);
+        mSurface.configure(surfaceConfig);
 
         // Initialize the command queue
-        mQueue = wgpuDeviceGetQueue(mDevice);
+        mQueue = mDevice.getQueue();
 
         return true;
     }
@@ -99,7 +99,8 @@ namespace learn::webgpu
     wgpu::TextureView Application::getNextSurfaceTextureView()
     {
         wgpu::SurfaceTexture surfaceTexture;
-        wgpuSurfaceGetCurrentTexture(mSurface, &surfaceTexture);
+        mSurface.getCurrentTexture(&surfaceTexture);
+        wgpu::Texture texture = surfaceTexture.texture;
         if (surfaceTexture.status != wgpu::SurfaceGetCurrentTextureStatus::Success)
         {
             return nullptr;
@@ -107,14 +108,15 @@ namespace learn::webgpu
 
         wgpu::TextureViewDescriptor viewDescriptor{};
         viewDescriptor.label = "Surface texture view";
-        viewDescriptor.format = wgpuTextureGetFormat(surfaceTexture.texture);
+        viewDescriptor.format = wgpuTextureGetFormat(texture);
         viewDescriptor.dimension = wgpu::TextureViewDimension::_2D;
         viewDescriptor.baseMipLevel = 0;
         viewDescriptor.mipLevelCount = 1;
         viewDescriptor.baseArrayLayer = 0;
         viewDescriptor.arrayLayerCount = 1;
         viewDescriptor.aspect = wgpu::TextureAspect::All;
-        wgpu::TextureView targetView = wgpuTextureCreateView(surfaceTexture.texture, &viewDescriptor);
+        
+        wgpu::TextureView targetView = texture.createView(viewDescriptor);
         return targetView;
     }
 
@@ -129,9 +131,9 @@ namespace learn::webgpu
         wgpu::RenderPassColorAttachment renderPassColorAttachment = {};
         renderPassColorAttachment.view = textureView;
         renderPassColorAttachment.resolveTarget = nullptr;
-        renderPassColorAttachment.loadOp = WGPULoadOp_Clear;
-        renderPassColorAttachment.storeOp = WGPUStoreOp_Store;
-        renderPassColorAttachment.clearValue = WGPUColor{0.9, 0.9, 0.2, 1.0};
+        renderPassColorAttachment.loadOp = wgpu::LoadOp::Clear;
+        renderPassColorAttachment.storeOp = wgpu::StoreOp::Store;
+        renderPassColorAttachment.clearValue = wgpu::Color{0.9, 0.9, 0.2, 1.0};
 #ifndef WEBGPU_BACKEND_WGPU
         renderPassColorAttachment.depthSlice = WGPU_DEPTH_SLICE_UNDEFINED;
 #endif // NOT WEBGPU_BACKEND_WGPU
@@ -144,33 +146,31 @@ namespace learn::webgpu
 
         wgpu::CommandEncoderDescriptor encoderDesc = {};
         encoderDesc.label = "My command encoder";
-        wgpu::CommandEncoder encoder = wgpuDeviceCreateCommandEncoder(mDevice, &encoderDesc);
-
-        wgpu::RenderPassEncoder renderPass = wgpuCommandEncoderBeginRenderPass(encoder, &renderPassDesc);
-
-        wgpuRenderPassEncoderEnd(renderPass);
-        wgpuRenderPassEncoderRelease(renderPass);
+        wgpu::CommandEncoder encoder = mDevice.createCommandEncoder(encoderDesc);
+        wgpu::RenderPassEncoder renderPass = encoder.beginRenderPass(renderPassDesc);
+        renderPass.end();
+        renderPass.release();
 
         wgpu::CommandBufferDescriptor cmdBufferDescriptor = {};
         cmdBufferDescriptor.label = "Command buffer";
-        WGPUCommandBuffer command = wgpuCommandEncoderFinish(encoder, &cmdBufferDescriptor);
-        wgpuCommandEncoderRelease(encoder);
+        wgpu::CommandBuffer command = encoder.finish(cmdBufferDescriptor);
+        encoder.release();
+        encoder.release();
 
         std::cout << "Submitting command..." << std::endl;
-        wgpuQueueSubmit(mQueue, 1, &command);
-        wgpuCommandBufferRelease(command);
-
-        wgpuTextureViewRelease(textureView);
-        wgpuSurfacePresent(mSurface);
+        mQueue.submit(command);
+        command.release();
+        textureView.release();
+        mSurface.present();
         return true;
     }
 
     void Application::terminate()
     {
-        wgpuQueueRelease(mQueue);
-        wgpuDeviceRelease(mDevice);
-        wgpuSurfaceUnconfigure(mSurface);
-        wgpuSurfaceRelease(mSurface);
+        mQueue.release();
+        mDevice.release();
+        mSurface.unconfigure();
+        mSurface.release();
         glfwDestroyWindow(mWindow);
         glfwTerminate();
     }
