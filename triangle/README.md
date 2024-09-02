@@ -2,8 +2,8 @@ LearnWebGPU
 Step: 10
 ===========
 
-Render a triangle 
-![](screenshot/output.png)
+Render a triangle   
+![A triangle](screenshot/output.png)
 
 This is a repository of me learning webgpu using  [Learn WebGPU](https://eliemichel.github.io/LearnWebGPU) web book.
 
