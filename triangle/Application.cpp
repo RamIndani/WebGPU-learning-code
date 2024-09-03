@@ -88,89 +88,6 @@ namespace learn::webgpu
         return true;
     }
 
-    bool Application::isRunning()
-    {
-        return !glfwWindowShouldClose(mWindow);
-    }
-
-    void Application::mainLoop()
-    {
-        glfwPollEvents();
-    }
-
-    std::pair<wgpu::TextureView, wgpu::Texture> Application::getNextSurfaceTextureView()
-    {
-        wgpu::SurfaceTexture surfaceTexture;
-        mSurface.getCurrentTexture(&surfaceTexture);
-        wgpu::Texture texture = surfaceTexture.texture;
-        if (surfaceTexture.status != wgpu::SurfaceGetCurrentTextureStatus::Success)
-        {
-            return {nullptr, nullptr};
-        }
-
-        wgpu::TextureViewDescriptor viewDescriptor{};
-        viewDescriptor.label = "Surface texture view";
-        viewDescriptor.format = wgpuTextureGetFormat(texture);
-        viewDescriptor.dimension = wgpu::TextureViewDimension::_2D;
-        viewDescriptor.baseMipLevel = 0;
-        viewDescriptor.mipLevelCount = 1;
-        viewDescriptor.baseArrayLayer = 0;
-        viewDescriptor.arrayLayerCount = 1;
-        viewDescriptor.aspect = wgpu::TextureAspect::All;
-
-        wgpu::TextureView targetView = texture.createView(viewDescriptor);
-        return {targetView, texture};
-    }
-
-    bool Application::render()
-    {
-        auto [textureView, texture] = getNextSurfaceTextureView();
-        if (!textureView || !texture) {
-            return false;
-        }
-
-        wgpu::RenderPassColorAttachment renderPassColorAttachment = {};
-        // Setup the textureView where we will draw our content.
-        renderPassColorAttachment.view = textureView;
-        renderPassColorAttachment.resolveTarget = nullptr;
-        renderPassColorAttachment.loadOp = wgpu::LoadOp::Clear;
-        renderPassColorAttachment.storeOp = wgpu::StoreOp::Store;
-        renderPassColorAttachment.clearValue = wgpu::Color{1.0, 0.6, 0.65, 1.0};
-
-        wgpu::RenderPassDescriptor renderPassDesc = {};
-        renderPassDesc.colorAttachmentCount = 1;
-        renderPassDesc.colorAttachments = &renderPassColorAttachment;
-        renderPassDesc.depthStencilAttachment = nullptr;
-        renderPassDesc.timestampWrites = nullptr;
-
-        wgpu::CommandEncoderDescriptor encoderDesc = {};
-        encoderDesc.label = "background color encoder";
-        wgpu::CommandEncoder encoder = mDevice.createCommandEncoder(encoderDesc);
-        wgpu::RenderPassEncoder renderPass = encoder.beginRenderPass(renderPassDesc);
-
-        renderPass.setPipeline(mTrianglePipeline);
-        renderPass.draw(3, 1, 0, 0);
-        renderPass.end();
-        renderPass.release();
-
-        wgpu::CommandBufferDescriptor cmdBufferDescriptor = {};
-        cmdBufferDescriptor.label = "Command buffer";
-        // Finish configuring the encoder and get the final command that we will
-        // submit to the command queue.
-        wgpu::CommandBuffer command = encoder.finish(cmdBufferDescriptor);
-        encoder.release();
-
-        // Submitting command.
-        mQueue.submit(command);
-        // Release command that we created
-        command.release();
-        textureView.release();
-
-        // Present the surface
-        mSurface.present();
-        return true;
-    }
-
     void Application::setupPipeline()
     {
         // Setup shaderModule that binds together our shader code WGSL with
@@ -238,6 +155,90 @@ namespace learn::webgpu
         // Create an actual pipeline that chains together our vertex and fragment shader
         mTrianglePipeline = mDevice.createRenderPipeline(trianglePipelineDesc);
         shaderModule.release();
+    }
+
+    bool Application::isRunning()
+    {
+        return !glfwWindowShouldClose(mWindow);
+    }
+
+    void Application::mainLoop()
+    {
+        glfwPollEvents();
+    }
+
+    std::pair<wgpu::TextureView, wgpu::Texture> Application::getNextSurfaceTextureView()
+    {
+        wgpu::SurfaceTexture surfaceTexture;
+        mSurface.getCurrentTexture(&surfaceTexture);
+        wgpu::Texture texture = surfaceTexture.texture;
+        if (surfaceTexture.status != wgpu::SurfaceGetCurrentTextureStatus::Success)
+        {
+            return {nullptr, nullptr};
+        }
+
+        wgpu::TextureViewDescriptor viewDescriptor{};
+        viewDescriptor.label = "Surface texture view";
+        viewDescriptor.format = wgpuTextureGetFormat(texture);
+        viewDescriptor.dimension = wgpu::TextureViewDimension::_2D;
+        viewDescriptor.baseMipLevel = 0;
+        viewDescriptor.mipLevelCount = 1;
+        viewDescriptor.baseArrayLayer = 0;
+        viewDescriptor.arrayLayerCount = 1;
+        viewDescriptor.aspect = wgpu::TextureAspect::All;
+
+        wgpu::TextureView targetView = texture.createView(viewDescriptor);
+        return {targetView, texture};
+    }
+
+    bool Application::render()
+    {
+        auto [textureView, texture] = getNextSurfaceTextureView();
+        if (!textureView || !texture)
+        {
+            return false;
+        }
+
+        wgpu::RenderPassColorAttachment renderPassColorAttachment = {};
+        // Setup the textureView where we will draw our content.
+        renderPassColorAttachment.view = textureView;
+        renderPassColorAttachment.resolveTarget = nullptr;
+        renderPassColorAttachment.loadOp = wgpu::LoadOp::Clear;
+        renderPassColorAttachment.storeOp = wgpu::StoreOp::Store;
+        renderPassColorAttachment.clearValue = wgpu::Color{1.0, 0.6, 0.65, 1.0};
+
+        wgpu::RenderPassDescriptor renderPassDesc = {};
+        renderPassDesc.colorAttachmentCount = 1;
+        renderPassDesc.colorAttachments = &renderPassColorAttachment;
+        renderPassDesc.depthStencilAttachment = nullptr;
+        renderPassDesc.timestampWrites = nullptr;
+
+        wgpu::CommandEncoderDescriptor encoderDesc = {};
+        encoderDesc.label = "background color encoder";
+        wgpu::CommandEncoder encoder = mDevice.createCommandEncoder(encoderDesc);
+        wgpu::RenderPassEncoder renderPass = encoder.beginRenderPass(renderPassDesc);
+
+        renderPass.setPipeline(mTrianglePipeline);
+        renderPass.draw(3, 1, 0, 0);
+        renderPass.end();
+        renderPass.release();
+
+        wgpu::CommandBufferDescriptor cmdBufferDescriptor = {};
+        cmdBufferDescriptor.label = "Command buffer";
+        // Finish configuring the encoder and get the final command that we will
+        // submit to the command queue.
+        wgpu::CommandBuffer command = encoder.finish(cmdBufferDescriptor);
+        encoder.release();
+
+        // Submitting command.
+        mQueue.submit(command);
+        // Release command that we created
+        command.release();
+        textureView.release();
+
+        // Present the surface
+        mSurface.present();
+        return true;
     }
 
     void Application::terminate()
