@@ -2,3 +2,6 @@ build
 .vscode
 .git
 chapter2-setupwebgpu
+glfw3webgpu
+glfw
+webgpu
