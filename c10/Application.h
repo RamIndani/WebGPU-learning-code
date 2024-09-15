@@ -30,7 +30,10 @@ namespace learn::webgpu
         wgpu::RenderPipeline mTrianglePipeline;
         wgpu::TextureFormat mTextureFormat;
 
-        std::pair<wgpu::TextureView, wgpu::Texture> getNextSurfaceTextureView();
+        constexpr int kWindowWidth = 600;
+        constexpr int kWindowHieght = 600;
+
+        wgpu::TextureView getNextSurfaceTextureView();
 
         const char* shaderSource = R"(
 @vertex

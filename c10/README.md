@@ -1,5 +1,5 @@
 LearnWebGPU   
-Step: 9
+Step: 10
 ===========
 
 Render a triangle   
