@@ -160,7 +160,7 @@ namespace learn::webgpu
         trianglePipelineDesc.vertex.constants = nullptr;
         trianglePipelineDesc.primitive.topology = wgpu::PrimitiveTopology::TriangleList;
         trianglePipelineDesc.primitive.stripIndexFormat = wgpu::IndexFormat::Undefined;
-        trianglePipelineDesc.primitive.cullMode = wgpu::CullMode::Hide;
+        trianglePipelineDesc.primitive.cullMode = wgpu::CullMode::None;
         trianglePipelineDesc.primitive.frontFace = wgpu::FrontFace::CCW;
 
         // setup fragment shader
@@ -224,7 +224,7 @@ namespace learn::webgpu
         // Make sure the texture can be used for the drawing.
         if (surfaceTexture.status != wgpu::SurfaceGetCurrentTextureStatus::Success)
         {
-            return {nullptr, nullptr};
+            return nullptr;
         }
 
         // Configure the TextureView out of a texture that we have. 
@@ -309,10 +309,7 @@ namespace learn::webgpu
 
         #if defined(WEBGPU_BACKEND_DAWN)
 	        mDevice.tick();
-        #elif defined(WEBGPU_BACKEND_WGPU)
-	        mDevice.poll(false);
         #endif
-}
 
         return true;
     }

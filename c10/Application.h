@@ -30,8 +30,8 @@ namespace learn::webgpu
         wgpu::RenderPipeline mTrianglePipeline;
         wgpu::TextureFormat mTextureFormat;
 
-        constexpr int kWindowWidth = 600;
-        constexpr int kWindowHieght = 600;
+        const int kWindowWidth = 600;
+        const int kWindowHieght = 600;
 
         wgpu::TextureView getNextSurfaceTextureView();
 
