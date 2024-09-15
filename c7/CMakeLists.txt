@@ -11,14 +11,14 @@ include(../webgpu/webgpu.cmake)
 add_executable(App main.cpp Application.cpp)
 
 if (NOT EMSCRIPTEN)
-    add_subdirectory(glfw)
+    add_subdirectory(../glfw glfw)
 else()
     # Emscripten has built-in support for GLFW but requires the `-sUSE_GLFW=3` link option:
     add_library(glfw INTERFACE)
-    target_link_options(glfw INTERFACE -sUSE_GLFW=3)
+    target_link_options(../glfw INTERFACE -sUSE_GLFW=3)
 endif()
 
-add_subdirectory(glfw3webgpu)
+add_subdirectory(../glfw3webgpu glfw3webgpu)
 
 target_include_directories(App PRIVATE webgpu)
 
