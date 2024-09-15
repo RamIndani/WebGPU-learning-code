@@ -7,7 +7,7 @@ project(
 
 # We specify that we want to create a target of type executable, called "App"
 add_executable(App main.cpp)
-add_subdirectory(webgpu)
+add_subdirectory(../webgpu webgpu)
 
 # Add the 'webgpu' target as a dependency of our App
 target_link_libraries(App PRIVATE webgpu)
