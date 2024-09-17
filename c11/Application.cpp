@@ -262,7 +262,7 @@ namespace learn::webgpu
             bool ready;
             wgpu::Buffer buffer;
         };
-        Context context = { false, mOutputBuffer};
+        Context context{false, mOutputBuffer};
 
         auto onCallback = [] (WGPUBufferMapAsyncStatus status, void* pUserData) {
             Context* context = reinterpret_cast<Context*>(pUserData);
