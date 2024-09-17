@@ -213,22 +213,20 @@ namespace learn::webgpu
         wgpu::BufferDescriptor bufferDesc;
         bufferDesc.label = "Some GPU side data";
         bufferDesc.usage = wgpu::BufferUsage::CopyDst | wgpu::BufferUsage::CopySrc;
-        //Hard coding not good but okay for now.
+        // Hard coding not good but okay for now.
         bufferDesc.size = 16;
         bufferDesc.mappedAtCreation = false;
-        //TADA we have a buffer 
+        // TADA we have a buffer 
         // Congratulations you just used your VRAM directly for the first time.
         wgpu::Buffer mInputBuffer = mDevice.createBuffer(bufferDesc);
 
-        //Redine the label for the second buffer
+        // Redine the label for the second buffer
         // We will write data into mInputBuffer and the copy it to the mOutputBuffer and output it from there.
-       // wgpu::BufferDescriptor outputBufferDesc;
+        // wgpu::BufferDescriptor outputBufferDesc;
         bufferDesc.label = "Output buffer"; 
         // Change the usage bit as well to use MapRead and remove CopySrc
         // MapRead so that we can read back from the sencond buffer as we planned.
         bufferDesc.usage = wgpu::BufferUsage::CopyDst | wgpu::BufferUsage::MapRead;
-        //bufferDesc.mappedAtCreation = false;
-       // outputBufferDesc.size = 16;
         wgpu::Buffer mOutputBuffer = mDevice.createBuffer(bufferDesc);
         //NOTE: We release these buffers in the terminate, the fact that we call setupBuffers in the init()
         // we don't allocate buffers again while looping, so one release at the end in terminate is enough for now.
