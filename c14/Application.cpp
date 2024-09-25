@@ -126,7 +126,7 @@ namespace learn::webgpu
 
         requiredLimits.limits.maxVertexAttributes = 2;
 
-        requiredLimits.limits.maxVertexBuffers = 3;
+        requiredLimits.limits.maxVertexBuffers = 2;
 
         requiredLimits.limits.maxBufferSize = 6 * 3 * sizeof(float);
 
