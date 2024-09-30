@@ -1,5 +1,7 @@
 Examples from learning WebGPU    
 
+Rectangle with Index Buffer, Color Buffer and Uniform   
+![A rectangle](c15/screenshot/demo.gif)
 
 Rectangle with Index Buffer and Color Buffer   
 ![A rectangle](c14/screenshot/output.png)
