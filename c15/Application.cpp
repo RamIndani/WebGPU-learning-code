@@ -317,7 +317,7 @@ namespace learn::webgpu
         mQueue.writeBuffer(mUniformBuffer, 0, &mCurrentTime, sizeof(float));
 
 
-        
+
         wgpu::BindGroupEntry binding;
         binding.binding = 0;
         binding.buffer = mUniformBuffer;
@@ -459,9 +459,13 @@ namespace learn::webgpu
 
     void Application::terminate()
     {
+        mPointBuffer.destroy();
         mPointBuffer.release();
+        mColorBuffer.destroy();
         mColorBuffer.release();
+        mIndexBuffer.destroy();
         mIndexBuffer.release();
+        mUniformBuffer.destroy();
         mUniformBuffer.release();
         mTrianglePipeline.release();
         mQueue.release();
