@@ -4,11 +4,11 @@ Step: 15
 
 Render a Rectangle with Index Buffer and Color Buffer, along with a uniform to animate the scean.
 
-Uniform mapping
-<video controls>
-<sourcee src="/screenshot/demo.mp4">
-Browser does not support video tag
+Uniform mapping    
+<video autoplay controls>
+<source src="demo.mp4" type="video/mp4"  />
 </video>
+
 
 This is a repository of me learning webgpu using  [Learn WebGPU](https://eliemichel.github.io/LearnWebGPU) web book.
 
