@@ -5,7 +5,6 @@ Step: 15
 Render a Rectangle with Index Buffer and Color Buffer, along with a uniform to animate the scean.
 
 Uniform mapping   
-![demo](screenshot/demo.mp4)
 ![demo](screenshot/demo.gif)
 
 This is a repository of me learning webgpu using  [Learn WebGPU](https://eliemichel.github.io/LearnWebGPU) web book.
