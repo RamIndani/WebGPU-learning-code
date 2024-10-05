@@ -145,7 +145,7 @@ if (GLFW_INSTALL)
         configure_file(CMake/cmake_uninstall.cmake.in
                        cmake_uninstall.cmake IMMEDIATE @ONLY)
 
-        add_custom_target(uninstall
+        _target(uninstall
                           "${CMAKE_COMMAND}" -P
                           "${GLFW_BINARY_DIR}/cmake_uninstall.cmake")
         set_target_properties(uninstall PROPERTIES FOLDER "GLFW3")

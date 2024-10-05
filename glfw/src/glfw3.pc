@@ -1,7 +1,7 @@
-prefix=C:/Program Files (x86)/LearnWebGPU
+prefix=C:/Program Files (x86)/GLFW
 exec_prefix=${prefix}
-includedir=C:/Program Files (x86)/LearnWebGPU/include
-libdir=C:/Program Files (x86)/LearnWebGPU/lib
+includedir=C:/Program Files (x86)/GLFW/include
+libdir=C:/Program Files (x86)/GLFW/lib
 
 Name: GLFW
 Description: A multi-platform library for OpenGL, window and input

@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="E:\playground\webgpu-chapterwise\c9\CMakeFiles\2a46beafa6c413ca275c85fd0e345c5a\update_mappings.rule">
+    <CustomBuild Include="E:\playground\webgpu-chapterwise\glfw\CMakeFiles\50dbfe520d78f67048979c606bf1fadb\update_mappings.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="E:\playground\webgpu-chapterwise\c9\glfw\src\CMakeLists.txt" />
+    <CustomBuild Include="E:\playground\webgpu-chapterwise\glfw\src\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="E:\playground\webgpu-chapterwise\c9\glfw\src\mappings.h.in">
+    <None Include="E:\playground\webgpu-chapterwise\glfw\src\mappings.h.in">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="E:\playground\webgpu-chapterwise\c9\glfw\CMake\GenerateMappings.cmake" />
-    <None Include="E:\playground\webgpu-chapterwise\c9\glfw\src\CMakeFiles\update_mappings" />
+    <None Include="E:\playground\webgpu-chapterwise\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="E:\playground\webgpu-chapterwise\glfw\src\CMakeFiles\update_mappings" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{302228BD-41B5-3B95-AFCC-DB248F9A93CC}</UniqueIdentifier>
+      <UniqueIdentifier>{704454CA-B2B2-33EA-8D12-74DE461E405A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{FE213C25-2457-3E4F-9853-141424283EF9}</UniqueIdentifier>
+      <UniqueIdentifier>{36D3BA59-2A41-3390-8B1B-58D7AE5B7713}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

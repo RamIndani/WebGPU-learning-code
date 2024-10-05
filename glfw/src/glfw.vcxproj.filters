@@ -1,114 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\context.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\init.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\input.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\input.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\monitor.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\platform.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\platform.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\vulkan.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\vulkan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\window.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\egl_context.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\egl_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\osmesa_context.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\osmesa_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_init.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\null_init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_monitor.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\null_monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_window.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\null_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_joystick.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\null_joystick.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_module.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_module.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_time.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_time.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_thread.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_thread.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_init.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_joystick.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_joystick.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_monitor.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_monitor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_window.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\win32_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\playground\webgpu-chapterwise\c9\glfw\src\wgl_context.c">
+    <ClCompile Include="E:\playground\webgpu-chapterwise\glfw\src\wgl_context.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\include\GLFW\glfw3.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\include\GLFW\glfw3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\include\GLFW\glfw3native.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\include\GLFW\glfw3native.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\internal.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\platform.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\mappings.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\mappings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_platform.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\null_platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\null_joystick.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\null_joystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_time.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\win32_time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_thread.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\win32_thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_platform.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\win32_platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\playground\webgpu-chapterwise\c9\glfw\src\win32_joystick.h">
+    <ClInclude Include="E:\playground\webgpu-chapterwise\glfw\src\win32_joystick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\playground\webgpu-chapterwise\c9\glfw\src\CMakeLists.txt" />
+    <CustomBuild Include="E:\playground\webgpu-chapterwise\glfw\src\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{FE213C25-2457-3E4F-9853-141424283EF9}</UniqueIdentifier>
+      <UniqueIdentifier>{36D3BA59-2A41-3390-8B1B-58D7AE5B7713}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{949F8691-0CF6-3D4D-B177-86E16AEC6B2E}</UniqueIdentifier>
+      <UniqueIdentifier>{11908EB6-0FD7-39B2-BF8F-21D3F4C0A11A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
