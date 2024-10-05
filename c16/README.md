@@ -6,7 +6,7 @@ Render a Rectangle with Index Buffer and Color Buffer, along with a uniform to a
 
 Uniform mapping    
 
-![demo combined](screenshot/combined.webm)
+![demo combined](screenshot/combined.gif)
 
 ![demo1](screenshot/demo1.mp4)
 
