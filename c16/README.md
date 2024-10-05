@@ -5,7 +5,9 @@ Step: just playing
 Render a Rectangle with Index Buffer and Color Buffer, along with a uniform to animate the scean.
 
 Uniform mapping   
-![demo](screenshot/demo.mov)
+
+<video src="screenshot/demo.mov"></video>   
+
 ![demo1](screenshot/demo1.mp4)
 
 ![demo2](screenshot/demo2.mp4)
